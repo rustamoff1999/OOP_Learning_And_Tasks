@@ -22,3 +22,14 @@ let anotherChessman = Chessmen.rook(nameInRus:"Ладья",color:.black)
 var color = Chessmen.Color.white
 var otherColor = Chessmen.Color.black
 
+switch anotherChessman {
+    case .rook(let nameInRus, let color):
+        print("Chessman : Rook,name in russian: \(nameInRus),color: \(color)")
+    case let .knight(nameInRus,color):
+        print("Chessman : Knight, name in russian: \(nameInRus),color: \(color)")
+    case .king(let nameInRus, let color):
+        print("Chessman : King,name in russian: \(nameInRus),color: \(color)")
+    default:
+        print("Chessman is killed")
+}
+
