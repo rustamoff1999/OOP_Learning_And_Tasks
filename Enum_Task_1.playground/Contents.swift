@@ -8,7 +8,6 @@ enum Chessmen {
     case king
     case pawn
 }
-
 var chessman = Chessmen.knight
 var chessman2 : Chessmen
 chessman2 = .king
