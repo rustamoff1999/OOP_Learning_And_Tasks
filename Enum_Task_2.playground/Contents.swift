@@ -17,5 +17,4 @@ let chessman : Chessmen
 chessman = .pawn(nameInRus:"Пешка",color: .black)
 
 let chessman2 = Chessmen.knight(nameInRus: "Конь", color: .white)
-
 let chessman3 = Chessmen.bishop(nameInRus: "Слон", color: .black)
