@@ -2,23 +2,30 @@ import UIKit
 
 //: **Class**
 
-//:**Properties** and **Methods**
-
-enum Color {
-    case black,white
-}
-
-enum FigureType {
-    case rook,knight,bishop,queen,king,pawn
-}
+//:**Properties** , **Methods** and **Initializers**
 
 class Chessmen {
+    
+    enum Color {
+        case black,white
+    }
+    enum FigureType {
+        case rook,knight,bishop,queen,king,pawn
+    }
+    
     let figure : FigureType         //property
     let color : Color
     var coordinates: (String,UInt)? = nil
     let figureSymbol : Character
     
-    init(figure: FigureType, color: Color, figureSymbol : Character) {
+    init(figure: FigureType, color: Color, figureSymbol : Character, coordinates: (String,UInt)) {  //first init
+        self.figure = figure
+        self.color = color
+        self.figureSymbol = figureSymbol
+        self.setCoordinates(char: coordinates.0, num: coordinates.1)
+    }
+    
+    init(figure: FigureType, color: Color, figureSymbol : Character) {      //second init
         self.figure = figure
         self.color = color
         self.figureSymbol = figureSymbol
@@ -42,5 +49,9 @@ blackQueen.setCoordinates(char: "B", num: 3)
 var whiteBishop = Chessmen(figure: .bishop, color: .white, figureSymbol: "\u{2657}")
 whiteBishop.setCoordinates(char: "C", num: 7)
 whiteBishop.kill()
+
+var blackKnight = Chessmen(figure: .knight, color: .black, figureSymbol: "\u{2658}", coordinates: ("C",4))
+
+var linkToEnumType = Chessmen.FigureType.queen
 
 
