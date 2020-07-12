@@ -32,6 +32,20 @@ class GameDesk {
             desk[i] = [:]
         }
     }
+    //:**Subscript**
+    subscript(number: Int, alpha: String) -> Chessman? {
+        get {
+            return self.desk[number]![alpha]
+        }
+        set(newFigure) {
+            if let chessman = newFigure {
+                self.setChessman(chess: chessman, coordinates: (alpha,number))
+            }
+            else {
+                self.desk[number]![alpha] = nil
+            }
+        }
+    }
     func setChessman(chess: Chessman, coordinates: (String,Int)) {
         let rowRange = 1...8
         let colRange = "A...H"
@@ -45,9 +59,17 @@ class GameDesk {
     }
 }
 var rook = Chessman(color: .white, figureType: .rook)
+var queen = Chessman(color: .black, figureType: .queen)
+
 
 var game = GameDesk()
 game.setChessman(chess: rook, coordinates: ("A",8))
 rook.coordinates
 game.setChessman(chess: rook, coordinates: ("H",5))
 rook.coordinates
+game[5,"H"]
+game[5,"H"]!.coordinates
+
+game[1,"B"] = queen
+game[1,"B"] = nil
+game[1,"B"]
