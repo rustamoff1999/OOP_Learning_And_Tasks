@@ -12,6 +12,13 @@ class Quadruped {
 }
 //Subclass
 class Dog : Quadruped {
+    var owner : String
+    //override init()
+    override init() {
+        owner = "John"
+        super.init()
+        self.type = "dog"
+    }
     func bark() {
         print("Woof")
     }
@@ -25,6 +32,10 @@ dog.type = "dog"
 dog.name = "Mike"
 dog.walk()
 dog.bark()
+print()
+dog.owner
+dog.type
+dog.name
 dog.namePrint()
 print()
 //:*super*
@@ -42,3 +53,34 @@ class NoisyDog : Dog {
 
 var badDog = NoisyDog()
 badDog.bark()
+
+//:*You can also create an array type of SuperClass and add elements type of SubClass*
+var animalsArray : [Quadruped] = []
+var someAnimal = Quadruped()
+var myDog = Dog()
+var sadDog = NoisyDog()
+
+animalsArray.append(someAnimal)
+animalsArray.append(myDog)
+animalsArray.append(sadDog)
+print("Working with operators is,as")
+//:**operator is**
+for item in animalsArray {
+    if item is Dog {
+        print("Yes")
+    }
+}
+//:**operator as(as? as!)**
+
+for item in animalsArray {
+    print()
+    if let animal = item as? Dog {
+        animal.bark()
+    }
+    else if let animal = item as? NoisyDog {
+        animal.bark()
+    }
+    else {
+        item.walk()
+    }
+}
